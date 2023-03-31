@@ -14,6 +14,7 @@ import { EditarLivro } from "./pages/EditarLivro/EditarLivro";
 import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmprestimo";
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
+import { ThemeContext } from "./contexts/ThemeContext";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -31,9 +32,21 @@ export function App() {
     // Quando o App for renderizado/inicializado
   }, []);
 
+  const [temaEscuro, setTemaEscuro] = useState(false)
+  
+  
+  function alternar() {
+    if (temaEscuro === true) {
+      setTemaEscuro(false)
+    } else {
+      setTemaEscuro(true)
+    }
+  }                                                
+  
   return (
     <>
       <AuthContext.Provider value={usuarioLogado}>
+      <ThemeContext.Provider value={{temaEscuro: temaEscuro, alternar: alternar}}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Root />}>
@@ -49,6 +62,7 @@ export function App() {
             <Route path="/cadastro" element={<Cadastro />} />
           </Routes>
         </BrowserRouter>
+      </ThemeContext.Provider>
       </AuthContext.Provider>
       <Toaster />
     </>

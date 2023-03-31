@@ -1,9 +1,12 @@
 import "./Menu.css";
-import { Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
+import { Container, Nav, Navbar, Offcanvas, Button } from "react-bootstrap";
 import logoIcon from "./../../assets/icons/livros.png";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
 import { useState } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
+
 
 export function Menu() {
   const navigate = useNavigate();
@@ -20,8 +23,17 @@ export function Menu() {
   const handleShow = () => setShow(true);
   const place = "end"
 
+  const resultado = useContext(ThemeContext)
+  const temaEscuro = resultado.temaEscuro
+  const alternar = resultado.alternar
+  
+  let iconeBtn = "https://cdn-icons-png.flaticon.com/512/581/581601.png";
+  if (temaEscuro) {
+    iconeBtn = "https://cdn-icons-png.flaticon.com/512/3073/3073665.png";
+  }
+  
   return (
-    <Navbar bg="success" variant="light" expand="lg">
+    <Navbar bg={temaEscuro ? "dark" : "success"} expand="lg" variant={temaEscuro ? "dark":"light"}>
       <Container fluid>
         <Navbar.Brand>
           <Link to="/">
@@ -45,6 +57,7 @@ export function Menu() {
             <Nav.Link onClick={onLogout}>
               <i className="bi bi-box-arrow-right"></i>
             </Nav.Link>
+            <Button variant="outline-light" onClick={alternar}><img src={iconeBtn} width="16"></img></Button>
           </Nav>
         </Offcanvas.Body>
         </Navbar.Offcanvas>
