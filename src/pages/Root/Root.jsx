@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { Menu } from "../../components/Menu/Menu";
 import { AuthContext } from "../../contexts/AuthContext";
+import { Footer } from "../Footer/Footer"
 
 // Layout principal do App com Navbar Fixa
 // As páginas com Navbar fixa: home, livros, empréstimos, etc
@@ -22,6 +23,9 @@ export function Root() {
       <main>
         <Outlet />
       </main>
+      <footer>
+        <Footer/>
+      </footer>
     </>
   );
 }

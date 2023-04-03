@@ -65,6 +65,7 @@ export function App() {
       </ThemeContext.Provider>
       </AuthContext.Provider>
       <Toaster />
+      
     </>
   );
 }
