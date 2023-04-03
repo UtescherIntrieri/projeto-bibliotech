@@ -1,14 +1,19 @@
-import { useContext } from "react";
-import { Button, Container, Form } from "react-bootstrap";
-import { useForm } from "react-hook-form";
+import { type } from "@testing-library/user-event/dist/type";
+import { useContext, useState } from "react";
+import { Button, Container, Form, InputGroup } from "react-bootstrap";
+import { set, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/icons/google-white.svg";
 import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
-import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
+import {
+  loginGoogle,
+  loginEmailSenha,
+} from "../../firebase/auth";
 
 export function Login() {
+  const [passwordShown, setPasswordShown] = useState("password");
   const {
     register,
     handleSubmit,
@@ -16,6 +21,14 @@ export function Login() {
   } = useForm();
 
   const navigate = useNavigate();
+
+  function Esconder() {
+    if (passwordShown === "password") {
+      setPasswordShown("text");
+    } else {
+      setPasswordShown("password");
+    }
+  }
 
   function onSubmit(data) {
     const { email, senha } = data;
@@ -52,6 +65,8 @@ export function Login() {
       });
   }
 
+
+
   const usuarioLogado = useContext(AuthContext);
 
   // Se tiver dados no objeto, está logado
@@ -73,6 +88,7 @@ export function Login() {
         <img src={googleIcon} width="32" alt="Google icon" /> Entrar com o
         Google
       </Button>
+      
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>
@@ -89,10 +105,15 @@ export function Login() {
         <Form.Group className="mb-3" controlId="senha">
           <Form.Label>Senha</Form.Label>
           <Form.Control
-            type="password"
+            type={passwordShown}
             placeholder="Sua senha"
             className={errors.senha ? "is-invalid" : ""}
             {...register("senha", { required: "Senha é obrigatória" })}
+          />
+          <Form.Check
+            type="checkbox" onClick={Esconder}
+            id="custom-check"
+            label="Mostrar Senha"
           />
           <Form.Text className="invalid-feedback">
             {errors.senha?.message}
