@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
 import { useForm } from "react-hook-form";
-import { cadastrarEmailSenha, loginGoogle } from "../../firebase/auth";
+import { cadastrarEmailSenha, loginGoogle, loginFacebook, } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import facebookIcon from "../../assets/icons/icons8-facebook.svg";
 
 export function Cadastro() {
   const {
@@ -52,7 +53,22 @@ export function Cadastro() {
         });
       });
   }
-
+  function onLoginFacebook() {
+    loginFacebook()
+      .then((user) => {
+        toast.success(`Bem-vindo(a) ${user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+      });
+  }
   return (
     <Container fluid className="my-5">
       <p className="text-center">
@@ -66,6 +82,10 @@ export function Cadastro() {
       <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
         <img src={googleIcon} width="32" alt="Logo do google" />
         Entrar com o Google
+      </Button>
+      <Button className="mb-3"  onClick={onLoginFacebook}>
+        <img src= {facebookIcon} width="32" alt="Facebook icon" /> Entrar com o
+        Facebook
       </Button>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
