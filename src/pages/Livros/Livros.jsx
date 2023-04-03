@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
 import { deleteLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
+import { Modal } from "react-bootstrap";
 
 export function Livros() {
 
@@ -30,6 +31,11 @@ export function Livros() {
     }
   }
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
   return (
     <div className="livros">
       <Container>
@@ -66,26 +72,41 @@ export function Livros() {
                       <img src={livro.urlCapa} alt={livro.titulo} />
                     </td>
                     <td>
-                      <Button
-                        as={Link}
-                        to={`/livros/editar/${livro.id}`}
-                        variant="warning"
-                        size="sm"
-                        className="me-2"
-                      >
-                        <i className="bi bi-pencil-fill"></i>
-                      </Button>
-                      <Button size="sm" variant="danger" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
-                        <i className="bi bi-trash3-fill"></i>
-                      </Button>
-                    </td>
+                    <Button
+                      size="sm"
+                      variant="primary"
+                      className="me-2"
+                      onClick={handleShow}>
+                      <i class="bi bi-info-lg"></i>
+                    </Button>
+                    <Modal show={show} onHide={handleClose} animation={false}>
+                      <Modal.Header closeButton>
+                        <Modal.Title>Sinopse</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>{livro.sinopse}</Modal.Body>
+                      <Modal.Footer>
+                      </Modal.Footer>
+                    </Modal>
+                    <Button
+                      as={Link}
+                      to={`/livros/editar/${livro.id}`}
+                      variant="warning"
+                      size="sm"
+                      className="me-2"
+                    >
+                      <i className="bi bi-pencil-fill"></i>
+                    </Button>
+                    <Button size="sm" variant="danger" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
+                      <i className="bi bi-trash3-fill"></i>
+                    </Button>
+                  </td>
                   </tr>
-                )
+            )
               })}
-            </tbody>
+          </tbody>
           </Table>
         }
-      </Container>
-    </div>
+    </Container>
+    </div >
   )
 }
