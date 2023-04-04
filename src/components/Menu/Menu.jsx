@@ -21,12 +21,6 @@ export function Menu() {
     });
   }
 
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const place = "end"
-
   const resultado = useContext(ThemeContext)
   const temaEscuro = resultado.temaEscuro
   const alternar = resultado.alternar
