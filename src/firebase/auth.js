@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  FacebookAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
   reauthenticateWithCredential,
@@ -29,6 +30,14 @@ export async function cadastrarEmailSenha(email, senha) {
 export async function loginGoogle() {
   // Configurar como o login do google vai funcionar
   const provider = new GoogleAuthProvider();
+  const resultado = await signInWithPopup(auth, provider);
+
+  return resultado.user;
+}
+
+export async function loginFacebook() {
+  // Configurar como o login do google vai funcionar
+  const provider = new FacebookAuthProvider();
   const resultado = await signInWithPopup(auth, provider);
 
   return resultado.user;
