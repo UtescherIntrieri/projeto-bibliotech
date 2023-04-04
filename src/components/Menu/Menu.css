@@ -1,3 +1,16 @@
 .dropdown-toggle-no-caret::after {
     display: none !important;
 }
+
+.avatar-container{
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+.avatar-container img{
+    border: 2px solid #64f932;
+    border-radius: 100%
+
+}
+
+

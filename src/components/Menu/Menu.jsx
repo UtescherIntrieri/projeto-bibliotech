@@ -1,16 +1,18 @@
-import "./Menu.css";
+import { useContext, useState } from "react";
 import { Container, Nav, Navbar, Offcanvas, Button } from "react-bootstrap";
 import logoIcon from "./../../assets/icons/livros.png";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
-import { useState } from "react";
-import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { Avatar } from "../Avatar";
+import { AuthContext } from "../../contexts/AuthContext";
+import "./Menu.css";
 
 export function Menu() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const user = useContext(AuthContext);
   const place = "end"
   
   const navigate = useNavigate();
@@ -31,7 +33,11 @@ export function Menu() {
   }
 
   return (
-    <Navbar bg={temaEscuro ? "dark" : "success"} expand="lg" variant={temaEscuro ? "dark":"light"}>
+    <Navbar
+      bg={temaEscuro ? "dark" : "success"}
+      expand="lg"
+      variant={temaEscuro ? "dark" : "light"}
+    >
       <Container fluid>
         <Navbar.Brand>
           <Link to="/">
@@ -53,16 +59,27 @@ export function Menu() {
                 Emprestimos
               </Nav.Link>
               <Nav.Link as={Link} to="/autores">
-              Autores
-            </Nav.Link>
-              <Nav.Link as={Link} to={`/perfil`}>
-                Perfil
+                Autores
               </Nav.Link>
               <Nav.Link onClick={onLogout}>
                 <i className="bi bi-box-arrow-right"></i>
               </Nav.Link>
-              <Button variant="outline-light" onClick={alternar}><img src={iconeBtn} width="16"></img></Button>
+              <Button variant="outline-light" onClick={alternar} className='theme-btn'>
+                <img src={iconeBtn} width="16"></img>
+              </Button>
             </Nav>
+            <div className="avatar-container">
+              <Avatar
+                photoURL={user?.photoURL}
+                size={{
+                  width: 50,
+                  height: 50,
+                }}
+                onClick={() => {
+                  navigate("/perfil");
+                }}
+              />
+            </div>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
       </Container>
