@@ -7,8 +7,12 @@ import { useState } from "react";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 
-
 export function Menu() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const place = "end"
+  
   const navigate = useNavigate();
 
   function onLogout() {
@@ -31,7 +35,7 @@ export function Menu() {
   if (temaEscuro) {
     iconeBtn = "https://cdn-icons-png.flaticon.com/512/3073/3073665.png";
   }
-  
+
   return (
     <Navbar bg={temaEscuro ? "dark" : "success"} expand="lg" variant={temaEscuro ? "dark":"light"}>
       <Container fluid>
@@ -42,29 +46,33 @@ export function Menu() {
         </Navbar.Brand>
         <Navbar.Toggle onClick={handleShow} />
         <Navbar.Offcanvas placement={place} className="w-25">
-        <Offcanvas.Header closeButton></Offcanvas.Header>
-        <Offcanvas.Body>
-          <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/">
-              Home
-            </Nav.Link>
-            <Nav.Link as={Link} to="/livros">
-              Livros
-            </Nav.Link>
-            <Nav.Link as={Link} to="/emprestimos">
-              Emprestimos
-            </Nav.Link>
-            <Nav.Link as={Link} to="/autores">
+          <Offcanvas.Header closeButton></Offcanvas.Header>
+          <Offcanvas.Body>
+            <Nav className="ms-auto d-flex align-items-center">
+              <Nav.Link as={Link} to="/">
+                Home
+              </Nav.Link>
+              <Nav.Link as={Link} to="/livros">
+                Livros
+              </Nav.Link>
+              <Nav.Link as={Link} to="/emprestimos">
+                Emprestimos
+              </Nav.Link>
+              <Nav.Link as={Link} to="/autores">
               Autores
             </Nav.Link>
-            <Nav.Link onClick={onLogout}>
-              <i className="bi bi-box-arrow-right"></i>
-            </Nav.Link>
-            <Button variant="outline-light" onClick={alternar}><img src={iconeBtn} width="16"></img></Button>
-          </Nav>
-        </Offcanvas.Body>
+              <Nav.Link as={Link} to={`/perfil`}>
+                Perfil
+              </Nav.Link>
+              <Nav.Link onClick={onLogout}>
+                <i className="bi bi-box-arrow-right"></i>
+              </Nav.Link>
+              <Button variant="outline-light" onClick={alternar}><img src={iconeBtn} width="16"></img></Button>
+            </Nav>
+          </Offcanvas.Body>
         </Navbar.Offcanvas>
       </Container>
     </Navbar>
   );
 }
+

@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: "bibliotech-nai",
   storageBucket: "bibliotech-nai.appspot.com",
   messagingSenderId: "650664067450",
-  appId: "1:650664067450:web:4b57b17ebb1ac4396956c3"
+  appId: "1:650664067450:web:4b57b17ebb1ac4396956c3",
 };
 
 // Inicializa o app com base nas configurações acima
