@@ -60,7 +60,7 @@
   width: 100;
 }
 
-button {
+.botao {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -75,6 +75,6 @@ button {
   margin: 0 12px 10px;
 }
 
-button:hover {
+.botao:hover {
   background-color: #0b80bf;
 }

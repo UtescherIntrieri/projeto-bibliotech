@@ -11,7 +11,7 @@ export function EmailAndPassword(props) {
    } = useForm();
 
     const onSubmit = (state) => {
-      console.log('senhd', state)
+      console.log('senha', state)
       if (props.user.email !== state.email) {
         props.onUpdateEmail(state)
       } else if (state.newPassword) {

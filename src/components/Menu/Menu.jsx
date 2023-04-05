@@ -35,8 +35,9 @@ export function Menu() {
   return (
     <Navbar
       bg={temaEscuro ? "dark" : "success"}
+      variant={temaEscuro ? "dark" : "light"}
       expand="lg"
-      variant={temaEscuro ? "dark" : "light"}>
+    >
       <Container fluid>
         <Navbar.Brand>
           <Link to="/">
@@ -44,7 +45,7 @@ export function Menu() {
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle onClick={handleShow} />
-        <Navbar.Offcanvas placement={place} className="w-25">
+        <Navbar.Offcanvas placement="end" className="w-50">
           <Offcanvas.Header closeButton></Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="ms-auto d-flex align-items-center">
@@ -63,13 +64,6 @@ export function Menu() {
               <NavLink as={Link} to="/quiz">
               Quiz
             </NavLink>
-              <Nav.Link onClick={onLogout}>
-                <i className="bi bi-box-arrow-right"></i>
-              </Nav.Link>
-              <Button variant="outline-light" onClick={alternar} className='theme-btn'>
-                <img src={iconeBtn} width="16"></img>
-              </Button>
-            </Nav>
             <div className="avatar-container">
               <Avatar
                 photoURL={user?.photoURL}
@@ -82,6 +76,13 @@ export function Menu() {
                 }}
               />
             </div>
+              <Button variant="outline-light" onClick={alternar} className="theme-btn">
+                <img src={iconeBtn} width="16" alt=""></img>
+              </Button>
+              <Nav.Link onClick={onLogout}>
+                <i className="bi bi-box-arrow-right"></i>
+              </Nav.Link>
+            </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
       </Container>

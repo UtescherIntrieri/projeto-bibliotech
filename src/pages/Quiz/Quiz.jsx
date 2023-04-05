@@ -49,6 +49,7 @@ export function Quiz() {
                   <span></span>
                   <button
                     onClick={() => proximaPergunta(opcoesResposta.correta)}
+                   className="botao"
                   >
                     {opcoesResposta.alternativa}
                     <br />
