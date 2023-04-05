@@ -1,23 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-export function useTheme (key, initialState) {
-  const INITIAL_STATE = {
-    user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
-    isFetching: false,
-    error: false,
-  }
+export function useTheme(initialState) {
   const [state, setState] = useState(() => {
-    const storage = localStorage.getItem(INITIAL_STATE);
-    if (storage) {
-      return JSON.parse(storage);
+    const storage = localStorage.getItem("themeLight");
+    if (storage && storage === "false") {
+      return true
     } else {
       return initialState;
     }
   });
-
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(state));
-  }, [key, state]);
-
   return [state, setState];
 }

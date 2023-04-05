@@ -13,7 +13,6 @@ export function Menu() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const user = useContext(AuthContext);
-  const place = "end"
   
   const navigate = useNavigate();
 
@@ -24,18 +23,18 @@ export function Menu() {
   }
 
   const resultado = useContext(ThemeContext)
-  const temaEscuro = resultado.temaEscuro
+  const temaClaro = resultado.temaClaro
   const alternar = resultado.alternar
   
   let iconeBtn = "https://cdn-icons-png.flaticon.com/512/581/581601.png";
-  if (temaEscuro) {
+  if (temaClaro) {
     iconeBtn = "https://cdn-icons-png.flaticon.com/512/3073/3073665.png";
   }
 
   return (
     <Navbar
-      bg={temaEscuro ? "dark" : "success"}
-      variant={temaEscuro ? "dark" : "light"}
+      bg={temaClaro ? "dark" : "success"}
+      variant={temaClaro ? "dark" : "light"}
       expand="lg"
     >
       <Container fluid>
