@@ -18,6 +18,7 @@ import { Profile } from "./pages/Profile/index"
 import { ThemeContext } from "./contexts/ThemeContext";
 import { Autores } from "./pages/Autores/Autores";
 import { AdicionarAutores } from "./pages/AdicionarAutores/AdicionarAutores";
+import { useTheme} from "./components/LocalStorage/useTheme"
 
 export function App(props) {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -33,8 +34,7 @@ export function App(props) {
  )}, []);
 
 
-  const [temaEscuro, setTemaEscuro] = useState(false)
-  
+  const [temaEscuro, setTemaEscuro] = useTheme(false)
   
   function alternar() {
     if (temaEscuro === true) {
