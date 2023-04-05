@@ -35,20 +35,21 @@ export function App(props) {
  )}, []);
 
 
-  const [temaEscuro, setTemaEscuro] = useTheme(false)
+  const [temaClaro, setTemaClaro] = useTheme(false)
   
   function alternar() {
-    if (temaEscuro === true) {
-      setTemaEscuro(false)
+    if (temaClaro === true) {
+      setTemaClaro(false)
     } else {
-      setTemaEscuro(true)
+      setTemaClaro(true)
     }
+    localStorage.setItem("themeLight", temaClaro)
   }                                                
   
   return (
     <>
       <AuthContext.Provider value={usuarioLogado}>
-      <ThemeContext.Provider value={{temaEscuro: temaEscuro, alternar: alternar}}>
+      <ThemeContext.Provider value={{temaClaro: temaClaro, alternar: alternar}}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Root />}>
