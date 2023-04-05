@@ -1,0 +1,80 @@
+.quiz {
+  background-image: url(https://t4.ftcdn.net/jpg/03/45/88/07/360_F_345880772_zIT2mkdCzTthplO7xqaGGrMspN0jw0ll.jpg);
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #fefefe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: #0b80bf;
+}
+.card-quiz {
+  box-shadow: #0b80bf;
+  padding: 10px;
+  border: 5px solid rgb(2, 183, 249);
+  margin: 0 auto;
+}
+
+.pontuacao {
+  display: flex;
+  min-height: 200px;
+  font-size: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+.infoPerguntas {
+  width: 100%;
+  position: relative;
+}
+
+.contagemPerguntas {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+.contagemPerguntas span {
+  font-size: 28px;
+}
+
+.pergunta {
+  margin-bottom: 20px;
+
+}
+
+.grupoResposta {
+  display: flex;
+  flex: 1 1 200px;
+  justify-content: center;
+  align-items:center;
+}
+
+.resposta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100;
+}
+
+button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  font-size: 16px;
+  color: #f8f8f8;
+  background-color: #074a88;
+  border-radius: 8px;
+  padding: 8px;
+  border: 3px solid hsl(0, 0%, 0%);
+  cursor: pointer;
+  margin: 0 12px 10px;
+}
+
+button:hover {
+  background-color: #0b80bf;
+}

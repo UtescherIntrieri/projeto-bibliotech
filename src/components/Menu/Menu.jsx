@@ -1,5 +1,5 @@
 import "./Menu.css";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, NavLink, Navbar } from "react-bootstrap";
 import logoIcon from "./../../assets/icons/livros.png";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
@@ -33,6 +33,9 @@ export function Menu() {
             <Nav.Link as={Link} to="/emprestimos">
               Emprestimos
             </Nav.Link>
+            <NavLink as={Link} to="/quiz">
+              Quiz
+            </NavLink>
             <Nav.Link onClick={onLogout}>
               <i className="bi bi-box-arrow-right"></i>
             </Nav.Link>
