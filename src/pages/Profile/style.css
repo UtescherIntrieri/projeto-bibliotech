@@ -1,0 +1,13 @@
+.profile-container{
+    max-width: 380px;
+    width: 100%;
+}
+
+.profile-providers{
+    margin: 40px 0;
+}
+ 
+
+.profile-provider span {
+    margin-left: 10px
+}

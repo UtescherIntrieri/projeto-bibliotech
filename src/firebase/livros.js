@@ -8,10 +8,14 @@ import {
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { livrosCollection } from "./collections";
+import { autoresCollection } from "./collections";
 import { storage } from "./config"
 
 export async function addLivro(data) {
     await addDoc(livrosCollection, data);
+}
+export async function addAutor(data) {
+    await addDoc(autoresCollection, data);
 }
 
 export async function getLivros() {
@@ -22,9 +26,20 @@ export async function getLivros() {
     })
     return livros;
 }
-
+export async function getAutores() {
+    const snapshot = await getDocs(autoresCollection);
+    let autores = [];
+    snapshot.forEach(doc => {
+        autores.push({...doc.data(), id: doc.id});
+    })
+    return autores;
+}
 export async function getLivro(id) {
     const document = await getDoc(doc(livrosCollection, id));
+    return {...document.data(), id: document.id};
+}
+export async function getAutor(id) {
+    const document = await getDoc(doc(autoresCollection, id));
     return {...document.data(), id: document.id};
 }
 
