@@ -66,7 +66,7 @@ export function Livros() {
                   <tr key={livro.id}>
                     <td>{livro.titulo}</td>
                     <td>{livro.autor}</td>
-                    <td>{livro.categoria}</td>
+                    <td>{livro.categoria.map(cat => {return `${cat} `})}</td>
                     <td>{livro.isbn}</td>
                     <td>
                       <img src={livro.urlCapa} alt={livro.titulo} />
