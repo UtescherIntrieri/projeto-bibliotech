@@ -17,13 +17,22 @@ export function AdicionarEmprestimo() {
     function onSubmit(data) {
         getLivro(data.idLivro).then(livro => {
             delete data.idLivro;
-            let novoEmprestimo = {...data, status: "Pendente", livro, dataEmprestimo: new Date()};
+            let novoEmprestimo = {...data, status: "Pendente", livro, dataEmprestimo: new Date(), dataEntrega:convertStringToDate(data.dataEntrega)};
             adicionarEmprestimo(novoEmprestimo).then(() => {
                 toast.success("Empréstimo adicionado com sucesso!", { duration: 2000, position: "bottom-right" })
                 navigate("/emprestimos");
             })
         })
 
+    }
+
+    function convertStringToDate(dateString) {
+        const dateArray=dateString.split("-")
+        const year=dateArray[0]
+        const month=parseInt(dateArray[1])-1
+        const day=dateArray[2]
+        const date=new Date(year, month, day)  
+        return date;
     }
 
     useEffect(() => {
@@ -66,6 +75,13 @@ export function AdicionarEmprestimo() {
                         </Form.Select>
                         <Form.Text className="invalid-feedback">
                             {errors.idLivro?.message}
+                        </Form.Text>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Data de Entrega</Form.Label>
+                        <Form.Control type="date" className={errors.dataEntrega && "is-invalid"} {...register("dataEntrega", { required: "Data é obrigatória!" })} />
+                        <Form.Text className="invalid-feedback">
+                            {errors.dataEntrega?.message}
                         </Form.Text>
                     </Form.Group>
                     <Button type="submit" variant="success">Emprestar</Button>
