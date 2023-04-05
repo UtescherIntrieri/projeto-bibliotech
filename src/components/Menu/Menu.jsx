@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Container, Nav, Navbar, Offcanvas, Button } from "react-bootstrap";
+import { Container, Nav, Navbar, Offcanvas, Button, NavLink } from "react-bootstrap";
 import logoIcon from "./../../assets/icons/livros.png";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
@@ -37,7 +37,6 @@ export function Menu() {
       bg={temaEscuro ? "dark" : "success"}
       expand="lg"
       variant={temaEscuro ? "dark" : "light"}
-    >
       <Container fluid>
         <Navbar.Brand>
           <Link to="/">
@@ -61,6 +60,9 @@ export function Menu() {
               <Nav.Link as={Link} to="/autores">
                 Autores
               </Nav.Link>
+              <NavLink as={Link} to="/quiz">
+              Quiz
+            </NavLink>
               <Nav.Link onClick={onLogout}>
                 <i className="bi bi-box-arrow-right"></i>
               </Nav.Link>

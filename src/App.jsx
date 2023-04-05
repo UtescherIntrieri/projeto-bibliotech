@@ -14,6 +14,7 @@ import { EditarLivro } from "./pages/EditarLivro/EditarLivro";
 import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmprestimo";
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
+import { Quiz } from "./pages/Quiz/Quiz";
 import { Profile } from "./pages/Profile/index"
 import { ThemeContext } from "./contexts/ThemeContext";
 import { Autores } from "./pages/Autores/Autores";
@@ -64,7 +65,8 @@ export function App(props) {
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
-           </Routes>
+            <Route path="/quiz" element={<Quiz />} />
+          </Routes>
         </BrowserRouter>
       </ThemeContext.Provider>
       </AuthContext.Provider>
