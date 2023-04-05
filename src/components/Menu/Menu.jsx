@@ -36,7 +36,7 @@ export function Menu() {
     <Navbar
       bg={temaEscuro ? "dark" : "success"}
       expand="lg"
-      variant={temaEscuro ? "dark" : "light"}
+      variant={temaEscuro ? "dark" : "light"}>
       <Container fluid>
         <Navbar.Brand>
           <Link to="/">
