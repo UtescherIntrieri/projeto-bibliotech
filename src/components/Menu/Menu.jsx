@@ -62,21 +62,29 @@ export function Menu() {
                 Autores
               </Nav.Link>
               <NavLink as={Link} to="/quiz">
-              Quiz
-            </NavLink>
-            <div className="avatar-container">
-              <Avatar
-                photoURL={user?.photoURL}
-                size={{
-                  width: 50,
-                  height: 50,
-                }}
-                onClick={() => {
-                  navigate("/perfil");
-                }}
-              />
-            </div>
-              <Button variant="outline-light" onClick={alternar} className="theme-btn">
+                Quiz
+              </NavLink>
+              <div className="avatar-container">
+                <Avatar
+                  showDisplayName={true}
+                  photoURL={user?.photoURL}
+                  displayName={user?.displayName}
+                  email={user?.email}
+                  size={{
+                    width: 50,
+                    height: 50,
+                  }}
+                  onClick={() => {
+                    navigate("/perfil");
+                  }}
+                  temaEscuro={temaEscuro}
+                />
+              </div>
+              <Button
+                variant="outline-light"
+                onClick={alternar}
+                className="theme-btn"
+              >
                 <img src={iconeBtn} width="16" alt=""></img>
               </Button>
               <Nav.Link onClick={onLogout}>
