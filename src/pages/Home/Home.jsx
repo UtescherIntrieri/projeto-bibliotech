@@ -10,18 +10,6 @@ export function Home() {
   const [livros, setLivros] = useState([]);
   const [emprestimos, setEmprestimos] = useState(null);
 
-  function situacaoLivro (status, entrega) {
-    if (status === "Devolvido") {
-      return "Devolvido";
-    } else {
-      const dateNow = new Date();
-      if (dateNow > entrega) {
-        return "Atrasado";
-      } else {
-        return "Pendente";
-      }
-    }
-  }
 
   useEffect(() => {
     getLivros().then((livros) => {
