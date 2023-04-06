@@ -8,3 +8,13 @@
   margin: 0 auto;
   text-align: center;
 }
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  background-color: #198754;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+}
+.carousel-indicators {
+  background-color: #19875454;
+  border-radius: 50px;
+}
