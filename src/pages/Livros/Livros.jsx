@@ -6,9 +6,14 @@ import { Loader } from "../../components/Loader/Loader";
 import { deleteLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
 import { Modal } from "react-bootstrap";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { useContext } from "react";
+
 
 export function Livros() {
 
+  const resultado = useContext(ThemeContext)
+  const temaClaro = resultado.temaClaro
   const [livros, setLivros] = useState(null);
 
   useEffect(() => {
@@ -37,11 +42,11 @@ export function Livros() {
   const handleShow = () => setShow(true);
   
   return (
-    <div className="livros">
+    <div>
       <Container>
         <div className="d-flex justify-content-between align-items-center">
           <h1>Livros</h1>
-          <Button as={Link} to="/livros/adicionar" variant="success">
+          <Button as={Link} to="/livros/adicionar" variant="success" className={temaClaro ? "text-light" : "text-dark"}>
             Adicionar Livro
           </Button>
         </div>
@@ -49,7 +54,7 @@ export function Livros() {
         {livros === null ?
           <Loader />
           :
-          <Table striped bordered hover>
+          <Table bordered className={temaClaro ? "text-light" : ""}>
             <thead>
               <tr>
                 <th>Título</th>
@@ -60,13 +65,13 @@ export function Livros() {
                 <th>Ações</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody  className={temaClaro ? "text-light" : ""}>
               {livros.map(livro => {
                 return (
                   <tr key={livro.id}>
                     <td>{livro.titulo}</td>
                     <td>{livro.autor}</td>
-                    <td>{livro.categoria.map(cat => {return `${cat} `})}</td>
+                    <td>{livro.categoria.map(cat => {return `${cat}\n`})}</td>
                     <td>{livro.isbn}</td>
                     <td>
                       <img src={livro.urlCapa} alt={livro.titulo} />
@@ -75,11 +80,11 @@ export function Livros() {
                     <Button
                       size="sm"
                       variant="primary"
-                      className="me-2"
+                      className="m-1"
                       onClick={handleShow}>
                       <i class="bi bi-info-lg"></i>
                     </Button>
-                    <Modal show={show} onHide={handleClose} animation={false}>
+                    <Modal show={show} onHide={handleClose} animation={false} className="text-dark">
                       <Modal.Header closeButton>
                         <Modal.Title>Sinopse</Modal.Title>
                       </Modal.Header>
@@ -92,11 +97,11 @@ export function Livros() {
                       to={`/livros/editar/${livro.id}`}
                       variant="warning"
                       size="sm"
-                      className="me-2"
+                      className="m-1"
                     >
                       <i className="bi bi-pencil-fill"></i>
                     </Button>
-                    <Button size="sm" variant="danger" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
+                    <Button size="sm" className="m-1" variant="danger" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
                       <i className="bi bi-trash3-fill"></i>
                     </Button>
                   </td>

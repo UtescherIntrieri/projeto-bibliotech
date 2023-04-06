@@ -43,7 +43,7 @@ export function AdicionarLivro() {
     }
   }
   return (
-    <div className="adicionar-livro">
+    <div className="adicionar-livro mb-4">
       <Container>
         <h1>Adicionar livro</h1>
         <hr />

@@ -72,14 +72,14 @@ export function Cadastro() {
         });
       });
   }
-  
+
   const usuarioLogado = useContext(AuthContext);
 
   // Se tiver dados no objeto, está logado
   if (usuarioLogado !== null) {
     return <Navigate to="/" />;
   }
-  
+
   return (
     <Container fluid className="my-5">
       <p className="text-center">
@@ -94,8 +94,8 @@ export function Cadastro() {
         <img src={googleIcon} width="32" alt="Logo do google" />
         Entrar com o Google
       </Button>
-      <Button className="mb-3"  onClick={onLoginFacebook}>
-        <img src= {facebookIcon} width="32" alt="Facebook icon" /> Entrar com o
+      <Button className="mb-3" onClick={onLoginFacebook}>
+        <img src={facebookIcon} width="32" alt="Facebook icon" /> Entrar com o
         Facebook
       </Button>
       <Form onSubmit={handleSubmit(onSubmit)}>

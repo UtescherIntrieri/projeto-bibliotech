@@ -1,9 +1,3 @@
-.container-footer {
-  background-color: #188754;
-  color: aliceblue;
-  margin-top: 20%;
-}
-
 .container-footer h4 {
   font-weight: bold;
 }
@@ -17,11 +11,6 @@
 .container-section-links a {
   text-decoration: none;
   font-weight: 500;
-  color: aliceblue;
-}
-
-.container-section-links :hover {
-  color: #cccccc;
 }
 
 .container-section-redes {
@@ -35,14 +24,12 @@
   font-size: 15px;
   outline: none;
   border: 1px solid white;
-  color: white;
-  background-color: #188754;
 }
 
 .container-section-redes input::placeholder {
-  color: white;
   font-size: 14px;
   font-weight: bold;
+  color: rgb(184, 182, 182);
 }
 
 .container-section-redes button {

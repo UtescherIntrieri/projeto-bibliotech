@@ -3,8 +3,23 @@ import "./style.css";
 import Image from "react-bootstrap/Image";
 
 export const Avatar = (props) => {
+  let displayName = "";
+  if (props.showDisplayName) {
+    displayName =
+      props.displayName || props.email?.substring(0, props.email?.indexOf("@"));
+  }
+
   return (
     <div className="avatar-container" onClick={props.onClick || undefined}>
+      {displayName && (
+        <span
+          className={`avatar-display-name ${
+            props.temaClaro ? "text-light" : "text-dark"
+          }`}
+        >
+          {displayName}
+        </span>
+      )}
       <div
         className="avatar-image"
         style={{

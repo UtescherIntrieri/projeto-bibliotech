@@ -7,6 +7,7 @@ import * as service from "../../firebase/auth";
 import { deletarUsuario } from "../../firebase/auth";
 import { EmailAndPassword } from '../../components/Profile/EmailAndPassword'
 import { Avatar } from "../../components/Avatar/index"
+import { ThemeContext } from '../../contexts/ThemeContext';
 import "./style.css"
 import { UploadImage } from "../../components/UploadImage";
 
@@ -22,9 +23,11 @@ export function Profile(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const withoutDisplayName = user?.email
-    ? user.email.substring(0, user.email?.indexOf("@")).toUpperCase()
-    : null;
-
+  ? user.email.substring(0, user.email?.indexOf("@")).toUpperCase()
+  : null;
+  
+  const resultado = useContext(ThemeContext)
+  const temaClaro = resultado.temaClaro
   const displayName = user?.displayName || withoutDisplayName;
   const [name, setName] = useState(displayName || withoutDisplayName);
   const [url, setUrl] = useState(null);
@@ -144,7 +147,7 @@ export function Profile(props) {
       <div className="profile-container">
         <Tabs activeKey={activeTab} onSelect={handleTabSelect} className="mt-5">
           <Tab eventKey="profile" title="Dados do perfil">
-            <Card className="p-4 mt-4 shadow-lg">
+            <Card className={temaClaro ? "text-white bg-dark p-4 mt-4 shadow-lg" : "text-dark bg-white p-4 mt-4 shadow-lg"}>
               <ProfileForm user={user} onSubmit={updateProfile} />
             </Card>
             <div>

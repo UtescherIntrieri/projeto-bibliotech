@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Perguntas } from "../../pages/Quiz/data/perguntas";
 import "./Quiz.css";
+import { Button } from "react-bootstrap"
 
 export function Quiz() {
   const questions = Perguntas ?? [];
@@ -26,11 +27,15 @@ export function Quiz() {
     <div className="quiz">
       <div className="card-quiz">
         {showPontuacao ? (
-          <div className="pontuacao">
-            <span>
-              Sua pontuação é {pontos} de {questions.length}
-            </span>
-          </div>
+          <>
+            <div className="pontuacao">
+                Sua pontuação é {pontos} de {questions.length}
+                <br />
+            </div>
+                <Button variant="primary" href="/">
+                  Voltar para a tela Inicial
+                </Button>
+          </>
         ) : (
           <>
             <div className="infoPerguntas">
@@ -46,10 +51,9 @@ export function Quiz() {
             <div className="resposta">
               {questions[perguntaAtual].opcoesResposta.map((opcoesResposta) => (
                 <div className="grupoResposta">
-                  <span></span>
                   <button
                     onClick={() => proximaPergunta(opcoesResposta.correta)}
-                   className="botao"
+                    className="botao"
                   >
                     {opcoesResposta.alternativa}
                     <br />

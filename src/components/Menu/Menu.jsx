@@ -13,7 +13,6 @@ export function Menu() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const user = useContext(AuthContext);
-  const place = "end"
   
   const navigate = useNavigate();
 
@@ -24,19 +23,20 @@ export function Menu() {
   }
 
   const resultado = useContext(ThemeContext)
-  const temaEscuro = resultado.temaEscuro
+  const temaClaro = resultado.temaClaro
   const alternar = resultado.alternar
   
   let iconeBtn = "https://cdn-icons-png.flaticon.com/512/581/581601.png";
-  if (temaEscuro) {
+  if (temaClaro) {
     iconeBtn = "https://cdn-icons-png.flaticon.com/512/3073/3073665.png";
   }
 
   return (
     <Navbar
-      bg={temaEscuro ? "dark" : "success"}
-      variant={temaEscuro ? "dark" : "light"}
+      bg={temaClaro ? "dark" : "success"}
+      variant={temaClaro ? "dark" : "light"}
       expand="lg"
+      className="border-bottom border-success"
     >
       <Container fluid>
         <Navbar.Brand>
@@ -45,10 +45,10 @@ export function Menu() {
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle onClick={handleShow} />
-        <Navbar.Offcanvas placement="end" className="w-50">
+        <Navbar.Offcanvas backdrop={false} placement="end" className={temaClaro ? "w-50 bg-dark text-light" : "w-50"}>
           <Offcanvas.Header closeButton></Offcanvas.Header>
           <Offcanvas.Body>
-            <Nav className="ms-auto d-flex align-items-center">
+            <Nav className="ms-auto d-flex align-items-center dark">
               <Nav.Link as={Link} to="/">
                 Home
               </Nav.Link>
@@ -62,21 +62,29 @@ export function Menu() {
                 Autores
               </Nav.Link>
               <NavLink as={Link} to="/quiz">
-              Quiz
-            </NavLink>
-            <div className="avatar-container">
-              <Avatar
-                photoURL={user?.photoURL}
-                size={{
-                  width: 50,
-                  height: 50,
-                }}
-                onClick={() => {
-                  navigate("/perfil");
-                }}
-              />
-            </div>
-              <Button variant="outline-light" onClick={alternar} className="theme-btn">
+                Quiz
+              </NavLink>
+              <div className="avatar-container">
+                <Avatar
+                  showDisplayName={true}
+                  photoURL={user?.photoURL}
+                  displayName={user?.displayName}
+                  email={user?.email}
+                  size={{
+                    width: 50,
+                    height: 50,
+                  }}
+                  onClick={() => {
+                    navigate("/perfil");
+                  }}
+                  temaClaro={temaClaro}
+                />
+              </div>
+              <Button
+                variant="outline-light"
+                onClick={alternar}
+                className="theme-btn"
+              >
                 <img src={iconeBtn} width="16" alt=""></img>
               </Button>
               <Nav.Link onClick={onLogout}>
