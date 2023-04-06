@@ -45,6 +45,13 @@ export function App(props) {
     }
     localStorage.setItem("themeLight", temaClaro)
   }                                                
+  useEffect(() => {
+    if (temaClaro === true) {
+      document.body.classList.add("bg-dark", "text-light")
+    } else {
+      document.body.classList.remove("bg-dark", "text-light")
+    }
+  },[temaClaro])
   
   return (
     <>

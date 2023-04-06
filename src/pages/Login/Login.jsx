@@ -101,14 +101,17 @@ export function Login() {
         Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
       </p>
       <hr />
-      <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
-        <img src={googleIcon} width="32" alt="Google icon" /> Entrar com o
-        Google
-      </Button>
-      <Button className="mb-3"  onClick={onLoginFacebook}>
-        <img src= {facebookIcon} width="32" alt="Facebook icon" /> Entrar com o
-        Facebook
-      </Button>
+      <div className="text-center">
+        <Button className="mb-3 w-50" variant="danger" onClick={onLoginGoogle}>
+          <img src={googleIcon} width="32" alt="Google icon" /> Entrar com o
+          Google
+        </Button>
+        <br />
+        <Button className="mb-3 w-50" onClick={onLoginFacebook}>
+          <img src={facebookIcon} width="32" alt="Facebook icon" /> Entrar com o
+          Facebook
+        </Button>
+      </div>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>

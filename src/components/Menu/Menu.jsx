@@ -36,6 +36,7 @@ export function Menu() {
       bg={temaClaro ? "dark" : "success"}
       variant={temaClaro ? "dark" : "light"}
       expand="lg"
+      className="border-bottom border-success"
     >
       <Container fluid>
         <Navbar.Brand>
@@ -44,10 +45,10 @@ export function Menu() {
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle onClick={handleShow} />
-        <Navbar.Offcanvas placement="end" className="w-50">
+        <Navbar.Offcanvas backdrop={false} placement="end" className={temaClaro ? "w-50 bg-dark text-light" : "w-50"}>
           <Offcanvas.Header closeButton></Offcanvas.Header>
           <Offcanvas.Body>
-            <Nav className="ms-auto d-flex align-items-center">
+            <Nav className="ms-auto d-flex align-items-center dark">
               <Nav.Link as={Link} to="/">
                 Home
               </Nav.Link>
@@ -76,7 +77,7 @@ export function Menu() {
                   onClick={() => {
                     navigate("/perfil");
                   }}
-                  temaEscuro={temaEscuro}
+                  temaClaro={temaClaro}
                 />
               </div>
               <Button

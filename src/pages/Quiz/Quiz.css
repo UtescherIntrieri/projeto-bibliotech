@@ -15,6 +15,7 @@
   padding: 10px;
   border: 5px solid rgb(2, 183, 249);
   margin: 0 auto;
+  text-align: center;
 }
 
 .pontuacao {
@@ -43,7 +44,7 @@
 
 .pergunta {
   margin-bottom: 20px;
-
+  text-align: center;
 }
 
 .grupoResposta {
@@ -61,8 +62,6 @@
 }
 
 .botao {
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
   width: 100%;
   font-size: 16px;

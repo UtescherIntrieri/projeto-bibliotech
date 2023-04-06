@@ -1,3 +1,17 @@
 export function Home() {
-  return <>HOME</>;
+  return <div className="text-center">
+    <br />
+    <br />
+    HOME
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+  </div>;
 }

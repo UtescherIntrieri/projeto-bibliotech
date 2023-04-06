@@ -3,10 +3,14 @@ import { Badge, Button, Container, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getEmprestimos } from "../../firebase/emprestimos";
 import { Loader } from "../../components/Loader/Loader";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { useContext } from "react";
 // import { format, parseISO } from "date-fns";
 
 export function Emprestimos() {
 
+  const resultado = useContext(ThemeContext)
+  const temaClaro = resultado.temaClaro
   const [emprestimos, setEmprestimos] = useState(null);
   // const string = "2023-04-04T14:00Z";
   // const timestamp = Date.parse(parseISO(string));
@@ -35,14 +39,14 @@ export function Emprestimos() {
       <Container>
         <div className="d-flex justify-content-between align-items-center">
           <h1>Emprestimos</h1>
-          <Button as={Link} to="/emprestimos/adicionar" variant="success">Adicionar emprestimo</Button>
+          <Button as={Link} to="/emprestimos/adicionar" variant="success" className={temaClaro ? "text-light" : "text-dark"}>Adicionar emprestimo</Button>
         </div>
         <hr />
         {
           emprestimos === null ?
             <Loader />
             :
-            <Table striped bordered hover>
+            <Table bordered className={temaClaro ? "text-light" : ""}>
               <thead>
                 <tr>
                   <th>Leitor</th>

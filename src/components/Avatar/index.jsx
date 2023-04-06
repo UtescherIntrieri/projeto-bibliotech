@@ -14,7 +14,7 @@ export const Avatar = (props) => {
       {displayName && (
         <span
           className={`avatar-display-name ${
-            props.temaEscuro ? "text-light" : "text-dark"
+            props.temaClaro ? "text-light" : "text-dark"
           }`}
         >
           {displayName}

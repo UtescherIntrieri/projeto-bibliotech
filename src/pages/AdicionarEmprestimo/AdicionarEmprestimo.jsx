@@ -42,7 +42,7 @@ export function AdicionarEmprestimo() {
     }, [])
 
     return (
-        <div className="adicionar-emprestimo">
+        <div className="adicionar-emprestimo mb-4">
             <Container>
                 <h1>Adicionar empréstimo</h1>
                 <hr />

@@ -20,7 +20,7 @@ export function Root() {
       <header>
         <Menu />
       </header>
-      <main>
+      <main className="p">
         <Outlet />
       </main>
       <footer>
