@@ -32,7 +32,7 @@ export function Autores() {
             {autores.map(autores => {
 
                 return (
-                  <Card className={temaClaro ? "text-white bg-dark mb-3" : ""}>
+                  <Card className={temaClaro ? "text-white bg-dark mb-3" : "mb-3"}>
                         <Card.Header>Autor</Card.Header>
                         <Card.Body>
                             <Card.Title>{autores.nome}</Card.Title>
