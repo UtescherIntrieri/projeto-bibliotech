@@ -21,7 +21,7 @@ export function AdicionarAutores() {
 
     return (
 
-        <div className="adicionar-autores">
+        <div className="adicionar-autores mb-4">
             <Container>
                 <h1>Adicionar Autores</h1>
                 <hr />

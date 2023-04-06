@@ -7,8 +7,8 @@ import { getLivro, updateLivro, uploadCapaLivro } from "../../firebase/livros";
 
 export function EditarLivro() {
 
+    const categorias = ["Educação", "Terror", "Ficção", "Auto-Ajuda"]
     const {id} = useParams();
-
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
     const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ export function EditarLivro() {
     }, [id, reset]);
 
     return (
-        <div className="editar-livro">
+        <div className="editar-livro mb-4">
             <Container>
                 <h1>Editar livro</h1>
                 <hr />
@@ -62,13 +62,22 @@ export function EditarLivro() {
                             {errors.autor?.message}
                         </Form.Text>
                     </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Categoria</Form.Label>
-                        <Form.Control type="text" className={errors.categoria && "is-invalid"} {...register("categoria", {required: "Categoria é obrigatória!", maxLength: {value: 255, message: "Limite de 255 caracteres!"}})} />
-                        <Form.Text className="text-danger">
-                            {errors.categoria?.message}
-                        </Form.Text>
-                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Categoria</Form.Label>
+            {categorias.map((categoria) => {
+              return (
+                <Form.Check
+                  type="checkbox"
+                  label={categoria}
+                  value={categoria}
+                  className={errors.categoria && "is-invalid"} {...register("categoria", { required: "Categoria é obrigatória!" })}
+                />
+              )
+            })}
+            <Form.Text className="text-danger">
+              {errors.categoria?.message}
+            </Form.Text>
+          </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>ISBN</Form.Label>
                         <Form.Control type="text" className={errors.isbn && "is-invalid"} {...register("isbn", {required: "ISBN é obrigatório!", maxLength: {value: 255, message: "Limite de 255 caracteres!"}})} />
