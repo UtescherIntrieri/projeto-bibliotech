@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { Container, Card, Tab, Tabs, Modal, Button, Toast, ToastContainer} from "react-bootstrap"; 
 import { AuthContext } from "../../contexts/AuthContext";
 import { ProfileForm } from '../../components/Profile/Form'
-import { EmailAndPassword } from '../../components/Profile/EmailAndPassword'
 import * as service from "../../firebase/auth";
 import { deletarUsuario } from "../../firebase/auth";
+import { EmailAndPassword } from '../../components/Profile/EmailAndPassword'
+import { Avatar } from "../../components/Avatar/index"
 import "./style.css"
+import { UploadImage } from "../../components/UploadImage";
 
 
 export function Profile(props) {
@@ -25,9 +27,12 @@ export function Profile(props) {
 
   const displayName = user?.displayName || withoutDisplayName;
   const [name, setName] = useState(displayName || withoutDisplayName);
+  const [url, setUrl] = useState(null);
 
   useEffect(() => {
     setName(displayName || withoutDisplayName);
+    setUrl(url)
+
   }, [displayName]);
 
   async function deleteUser(data) {
@@ -80,7 +85,7 @@ export function Profile(props) {
   }
  
   return (
-    <Container className="d-flex justify-content-center align-items-center flex-column mt-5">
+    <Container className="d-flex justify-content-center align-items-center flex-column mt-5 profile-container-page">
       {showToast && (
         <ToastContainer className="p-3" position="top-center">
           <Toast
@@ -113,6 +118,24 @@ export function Profile(props) {
         </ToastContainer>
       )}
       <div className="hello-container">
+        <div className="avatar-container-profile">
+          <Avatar
+            className="current-img"
+            photoURL={user?.photoURL}
+            size={{
+              width: 100,
+              height: 100,
+            }}
+          ></Avatar>
+          <div className="upload-image">
+            <UploadImage
+               uploadImage={true}
+               onUpload={(url) =>
+                setUrl(url)
+              }
+            />
+          </div>
+        </div>
         <div className="name-container">
           <h3>Olá,</h3>
           {user ? <h1>{name}</h1> : <h3>Usuário(a)</h3>}

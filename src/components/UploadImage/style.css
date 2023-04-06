@@ -1,0 +1,17 @@
+.upload-container button{
+    border: none;
+    padding: 15px;
+    background: none;
+    transition: .3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.upload-container button:hover{
+    transform: scale(1.1);
+}
+
+.upload-container .bi-camera {
+    font-size: 20px;
+}
