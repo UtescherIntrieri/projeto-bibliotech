@@ -1,7 +1,10 @@
 .capaLivros {
-    width: 30vh;
+    height: 300px;
+    padding-bottom: 50px;
 }
 
 .containerPrincipal {
-    margin-bottom: 30vh;
+  margin-bottom: 24px;
+  margin: 0 auto;
+  text-align: center;
 }
