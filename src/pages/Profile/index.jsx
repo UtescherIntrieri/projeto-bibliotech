@@ -97,7 +97,7 @@ export function Profile(props) {
             delay={3000}
             autohide
             bg="success"
-            className="text-light"
+            className="text-dark"
           >
             <Toast.Header>
               <strong className="me-auto">Senha atualizada com sucesso!</strong>
@@ -114,7 +114,7 @@ export function Profile(props) {
             delay={3000}
             autohide
             bg="success"
-            className="text-light"
+            className="text-dark"
           >
             <Toast.Body>Dados atualizados com sucesso!</Toast.Body>
           </Toast>
@@ -164,7 +164,7 @@ export function Profile(props) {
             <Tab eventKey="password" title="Editar senha">
               <div style={{ marginTop: 40 }}>
                 <h3 style={{ textAlign: "center" }}>Segurança</h3>
-                <Card className="p-4 mt-4 shadow-lg">
+                <Card className={temaClaro ? "text-white bg-dark p-4 mt-4 mb-4 shadow-lg" : "text-dark bg-white p-4 mt-4 mb-4 shadow-lg"}>
                   <EmailAndPassword
                     user={user}
                     onUpdateEmail={onUpdateEmail}
@@ -177,7 +177,7 @@ export function Profile(props) {
         </Tabs>
       </div>
       {show && (
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} className="text-dark">
           <Modal.Header closeButton>
             <Modal.Title>Atenção !</Modal.Title>
           </Modal.Header>
